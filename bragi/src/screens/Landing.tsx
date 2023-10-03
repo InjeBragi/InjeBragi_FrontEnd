@@ -2,9 +2,14 @@ import { Image, ImageSourcePropType, ImageURISource, StyleSheet, Text, View } fr
 import { SafeAreaView } from "react-native-safe-area-context";
 import { COLOR } from "../colors/Colors";
 import LogButton from "../components/LogButton";
+import { useRootNavigation } from "../navigations/StackNavigation";
 
 export default function Landing(){
     const logoPath:string= "/Users/kjm/Projects/캡스톤/InjeBragi_FrontEnd/bragi/src/assets/logoMain.png"
+    const navigation = useRootNavigation()
+    const onPress=()=>{
+        navigation.navigate('SignUpPw')
+    }
     return(
         <View style={styles.container}>
             <View style={styles.logoContainer}>
@@ -13,9 +18,9 @@ export default function Landing(){
             </View>
             <View style={styles.buttonContainer}>
                 {/*btn*/}
-                <LogButton title="회원가입 하기" onPress={null} icon={logoPath}/>
-                <LogButton title="외부 로그인" onPress={null} icon={""}/>
-                <LogButton title="로그인" onPress={null} icon={""}/>
+                <LogButton title="회원가입 하기" onPress={onPress} icon={logoPath}/>
+                <LogButton title="외부 로그인" onPress={()=>{}} icon={logoPath}/>
+                <LogButton title="로그인" onPress={()=>{}} icon={logoPath}/>
                 
             </View>
         </View>
