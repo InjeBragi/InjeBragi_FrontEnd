@@ -1,22 +1,20 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { COLOR } from "../../colors/Colors";
-import LogHeader from "../../components/LogHeader";
-import SignUpInput from "../../components/SignUpInput";
-import { useLog } from "../../hooks/useLog";
-import { useRootNavigation } from "../../navigations/StackNavigation";
+import { COLOR } from "../../../colors/Colors";
+import ImagePicker from "../../../components/ImagePicker";
+import LogHeader from "../../../components/LogHeader";
+import SignUpInput from "../../../components/SignUpInput";
+import { useLog } from "../../../hooks/useLog";
+import { useRootNavigation } from "../../../navigations/StackNavigation";
 const titleSize = 24
-export default function SignUpId() {
-    const navigation = useRootNavigation();
+export default function SignUpImage() {
     
-    const onPressSignUpName=()=>{
-        navigation.navigate('SignUpName')
-    }
+   
     return (
         <View style={styles.container}>
             <LogHeader title="계정 만들기"/>
             <View style={styles.content}>
-                <Text style={styles.titleText}>ID를 입력해주세요</Text>
-                <SignUpInput value="ID" onPress={onPressSignUpName} title="다음" uri=''/>
+            <Text style={styles.titleText}>프로필 이미지를 선택해주세요</Text>
+                <ImagePicker/>
                 
             </View>
             
@@ -28,14 +26,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLOR.BACKCOLOR
     },
-    
-
     titleText:{
+        alignSelf:"center",
         fontSize:titleSize,
         color:COLOR.FONTCOLOR_WHITE,
-        marginBottom:10
+        marginBottom:50
     },
     content: {
+        
         padding:20,
         flex: 1,
         //borderWidth: 1,

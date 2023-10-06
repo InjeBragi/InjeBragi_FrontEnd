@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Image, Pressable, StyleSheet, Text } from "react-native";
-import {ImageLibraryOptions, ImagePickerResponse, launchImageLibrary } from 'react-native-image-picker';
+import { ImagePickerResponse, launchImageLibrary } from 'react-native-image-picker';
 import { COLOR } from "../colors/Colors";
 import { useRootNavigation } from "../navigations/StackNavigation";
 import SignUpInput from "./SignUpInput";

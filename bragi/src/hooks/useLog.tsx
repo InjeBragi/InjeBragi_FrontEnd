@@ -1,14 +1,9 @@
 import React, { useCallback, useState } from "react";
+import { userForm } from "../@types/dataType";
 
 
-type userData={
-    account:string,
-    pw:string,
-    age:string,
-    name:string,
-    image:string
-}
-const userData:userData={
+
+const userData:userForm={
     account:'',
     pw:'',
     age:'',
@@ -56,13 +51,19 @@ export const useLog=()=>{
     user.pw=''
     user.image =''
    }
+   type props={id:string,pw:string}
+   const onPressLogin = ({id,pw}:props) => {
+        //post
+        return true
+   }
     return{
         setAccount,
         setAge,
         setImage,
         setName,
         setPw,
-        onPressSubmit
+        onPressSubmit,
+        onPressLogin,
     }
 
 }

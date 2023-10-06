@@ -1,18 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack"
 import Landing from "../screens/Landing";
-import SignUpBrith from "../screens/sign/SignUpBirth";
-import SignUpId from "../screens/sign/SignUpId";
-import SignUpImage from "../screens/sign/SignUpImage";
-import SignUpName from "../screens/sign/SignUpName";
-import SignUpPw from "../screens/sign/SignUpPw";
+import SignInPage from "../screens/sign/signin/SignInPage";
+import SignUpBrith from "../screens/sign/signup/SignUpBirth";
+import SignUpId from "../screens/sign/signup/SignUpId";
+import SignUpImage from "../screens/sign/signup/SignUpImage";
+import SignUpName from "../screens/sign/signup/SignUpName";
+import SignUpPw from "../screens/sign/signup/SignUpPw";
+
 export type RootStackParamList ={
     Landing:undefined,
     SignUpPw:undefined,
     SignUpBirth:undefined,
     SignUpName:undefined,
     SignUpImage:undefined,
-    SignUpId:undefined
+    SignUpId:undefined,
+    SignIn:undefined
 
 }
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -30,6 +33,7 @@ export default function StackNavigation(){
             <Stack.Screen name="SignUpBirth" component={SignUpBrith}/>
             <Stack.Screen name="SignUpName" component={SignUpName}/>
             <Stack.Screen name="SignUpImage" component={SignUpImage}/>
+            <Stack.Screen name="SignIn" component={SignInPage}/>
 
         </Stack.Navigator>
     )

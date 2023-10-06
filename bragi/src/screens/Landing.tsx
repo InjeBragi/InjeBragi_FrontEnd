@@ -7,8 +7,11 @@ import { useRootNavigation } from "../navigations/StackNavigation";
 export default function Landing(){
     const logoPath:string= "/Users/kjm/Projects/캡스톤/InjeBragi_FrontEnd/bragi/src/assets/logoMain.png"
     const navigation = useRootNavigation()
-    const onPress=()=>{
-        navigation.navigate('SignUpPw')
+    const onPressSignUp=()=>{
+        navigation.navigate('SignUpId')
+    }
+    const onPressSignIn=()=>{
+        navigation.navigate('SignIn')
     }
     return(
         <View style={styles.container}>
@@ -18,9 +21,9 @@ export default function Landing(){
             </View>
             <View style={styles.buttonContainer}>
                 {/*btn*/}
-                <LogButton title="회원가입 하기" onPress={onPress} icon={logoPath}/>
+                <LogButton title="회원가입 하기" onPress={onPressSignUp} icon={logoPath}/>
                 <LogButton title="외부 로그인" onPress={()=>{}} icon={logoPath}/>
-                <LogButton title="로그인" onPress={()=>{}} icon={logoPath}/>
+                <LogButton title="로그인" onPress={onPressSignIn} icon={logoPath}/>
                 
             </View>
         </View>

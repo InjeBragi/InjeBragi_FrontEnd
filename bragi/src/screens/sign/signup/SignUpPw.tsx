@@ -1,22 +1,21 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { COLOR } from "../../colors/Colors";
-import LogHeader from "../../components/LogHeader";
-import SignUpInput from "../../components/SignUpInput";
-import { useLog } from "../../hooks/useLog";
-import { useRootNavigation } from "../../navigations/StackNavigation";
-const titleSize = 22
-export default function SignUpName() {
+import { COLOR } from "../../../colors/Colors";
+import LogHeader from "../../../components/LogHeader";
+import SignUpInput from "../../../components/SignUpInput";
+import { useLog } from "../../../hooks/useLog";
+import { useRootNavigation } from "../../../navigations/StackNavigation";
+const titleSize = 24
+export default function SignUpPw() {
     const navigation = useRootNavigation();
-    const onPressClear=()=>{
-        navigation.navigate('SignUpImage')
+    const onPressSignUpBirth=()=>{
+        navigation.navigate('SignUpBirth')
     }
-   
     return (
         <View style={styles.container}>
             <LogHeader title="계정 만들기"/>
             <View style={styles.content}>
-                <Text style={styles.titleText}>이름을 입력해주세요</Text>
-                <SignUpInput value="userInfo" onPress={onPressClear} title="다음"uri=""/>
+                <Text style={styles.titleText}>PW를 입력해주세요</Text>
+                <SignUpInput value="PW" onPress={onPressSignUpBirth} title="다음" uri=""/>
                 
             </View>
             
