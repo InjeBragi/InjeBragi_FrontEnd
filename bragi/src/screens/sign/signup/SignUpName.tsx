@@ -16,7 +16,7 @@ export default function SignUpName() {
             <LogHeader title="계정 만들기"/>
             <View style={styles.content}>
                 <Text style={styles.titleText}>이름을 입력해주세요</Text>
-                <SignUpInput value="userInfo" onPress={onPressClear} title="다음"uri=""/>
+                <SignUpInput value="NAME" onPress={onPressClear} title="다음"uri=""/>
                 
             </View>
             

@@ -30,7 +30,7 @@ export default function SignInPage(){
     const {onPressLogin} = useLog()
     const onPress = () =>{
         if(onPressLogin({id,pw})){
-            navigation.navigate('Landing')
+            navigation.navigate('Main')
         }
         else{
             setPw('')

@@ -10,7 +10,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, Text } from 'react-native';
-import StackNavigation from './src/navigations/StackNavigation';
+import StackNavigation, { RootStackParamList } from './src/navigations/StackNavigation';
+
 
 
 function App(): JSX.Element {
@@ -19,6 +20,7 @@ function App(): JSX.Element {
       <SafeAreaView style={styles.container}>
       <NavigationContainer>
         <StackNavigation />
+
       </NavigationContainer>
       </SafeAreaView>
       </SafeAreaProvider>

@@ -8,7 +8,6 @@ import SignUpInput from "./SignUpInput";
 
 export default function ImagePicker(){
     const [photo, setPhoto] = useState('')
-    
     const pickImage = async () => {
         const result:ImagePickerResponse|any = await launchImageLibrary({
             mediaType: "photo"
