@@ -8,6 +8,7 @@ import SignUpImage from "../screens/sign/signup/SignUpImage";
 import SignUpName from "../screens/sign/signup/SignUpName";
 import SignUpPw from "../screens/sign/signup/SignUpPw";
 import MainPage from "../screens/guestPages/MainPage";
+import TabNavigation from "./TabNavigation";
 
 export type RootStackParamList ={
     Landing:undefined,
@@ -17,7 +18,8 @@ export type RootStackParamList ={
     SignUpImage:undefined,
     SignUpId:undefined,
     SignIn:undefined,
-    Main:undefined
+    Main:undefined,
+    Bottom:undefined
 
 }
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -36,7 +38,8 @@ export default function StackNavigation(){
             <Stack.Screen name="SignUpName" component={SignUpName}/>
             <Stack.Screen name="SignUpImage" component={SignUpImage}/>
             <Stack.Screen name="SignIn" component={SignInPage}/>
-            <Stack.Screen name="Main" component={MainPage}/>
+            
+            <Stack.Screen name="Bottom" component={TabNavigation}/>
         </Stack.Navigator>
     )
 }

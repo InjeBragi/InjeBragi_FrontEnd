@@ -5,3 +5,9 @@ export type userForm={
     name:string,
     image:string
 }
+export type album = {
+    artistName:string,
+    title:string,
+    albumName:string,
+    imageUrl:string
+}

@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { COLOR } from "../../../colors/Colors";
-import LogHeader from "../../../components/LogHeader";
+import LogHeader from "../../../components/Header/LogHeader";
 import SignUpInput from "../../../components/SignUpInput";
 import { useRootNavigation } from "../../../navigations/StackNavigation";
 

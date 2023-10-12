@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native"
-import { COLOR } from "../colors/Colors"
+import { COLOR } from "../../colors/Colors"
 
 type headerProps={
     title:string

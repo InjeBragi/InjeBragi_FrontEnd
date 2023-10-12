@@ -32,9 +32,27 @@ export const client = () =>{
         }
     }
 
+    const SPOTIFY_SEARCH_GET =async (data:string) =>{
+       console.log('SPOTIFY')
+        try{
+            const res = await axios.get(`${serverPath}/search`,{
+                params:{
+                    keyword:data
+                }
+            })
+            
+            return res.data.data
+        }
+        catch(error){
+            console.log(error)
+            
+        }
+
+    }
     return{
         SIGNIN_POST,
-        SIGNUP_POST
+        SIGNUP_POST,
+        SPOTIFY_SEARCH_GET
     }
 
 }

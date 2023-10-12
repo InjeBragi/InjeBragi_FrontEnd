@@ -4,7 +4,7 @@ import { COLOR } from "../colors/Colors"
 type Props = {
     title:string,
     onPress:()=>void,
-    icon:string
+    icon:ImageSourcePropType
 }
 export default function LogButton({title,onPress,icon}:Props){
     console.log(icon)
@@ -12,7 +12,7 @@ export default function LogButton({title,onPress,icon}:Props){
         <Pressable style={styles.button}
         onPress={()=>{onPress()}}>
             <View style={{position:"absolute"}}>
-            <Image style={styles.icon} source={{uri:icon}}/>
+            <Image style={styles.icon} source={icon}/>
             </View>
             <View style={styles.textContiner}>
             <Text style={styles.buttonFont}>{title}</Text>

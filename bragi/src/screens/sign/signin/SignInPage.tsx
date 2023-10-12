@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { COLOR } from "../../../colors/Colors";
 import LogButton from "../../../components/LogButton";
-import LogHeader from "../../../components/LogHeader";
+import LogHeader from "../../../components/Header/LogHeader";
 import SignUpInput from "../../../components/SignUpInput";
 import { useLog } from "../../../hooks/useLog";
 import { useRootNavigation } from "../../../navigations/StackNavigation";
@@ -30,7 +30,7 @@ export default function SignInPage(){
     const {onPressLogin} = useLog()
     const onPress = () =>{
         if(onPressLogin({id,pw})){
-            navigation.navigate('Main')
+            navigation.navigate('Bottom')
         }
         else{
             setPw('')

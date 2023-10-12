@@ -11,17 +11,22 @@ import React from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, Text } from 'react-native';
 import StackNavigation, { RootStackParamList } from './src/navigations/StackNavigation';
+import TabNavigation from './src/navigations/TabNavigation';
+import { Provider } from 'react-redux';
+import store from './src/components/redux/store/store';
 
 
 
 function App(): JSX.Element {
   return (
     <SafeAreaProvider>
+      
       <SafeAreaView style={styles.container}>
+      <Provider store={store}>
       <NavigationContainer>
         <StackNavigation />
-
       </NavigationContainer>
+      </Provider>
       </SafeAreaView>
       </SafeAreaProvider>
 
