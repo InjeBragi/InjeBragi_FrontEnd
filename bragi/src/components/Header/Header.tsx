@@ -1,15 +1,16 @@
 import { StyleSheet, Text, View } from "react-native"
 import { COLOR } from "../../colors/Colors"
-
+import Icon from 'react-native-vector-icons/Ionicons'
 export type HeaderProps = {
     title:string,
-    iconName:string
+    iconName:string,
+    onPress:()=>void
 }
-export default function Header({title,iconName}:HeaderProps){
+export default function Header({title,iconName,onPress}:HeaderProps){
     return(
         <View style={styles.titleContainer}>
             <Text style={styles.titleText}>{title}</Text>
-            <Text style={styles.titleText}>{iconName}</Text>
+            <Icon name={iconName}  size={18} color={'white'}/>
         </View>
     )
 }

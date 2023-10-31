@@ -15,6 +15,6 @@ export const musicReducer = (state = data, action:any) =>{
         }
     }
     return {
-        data
+        ...state
     }
 }

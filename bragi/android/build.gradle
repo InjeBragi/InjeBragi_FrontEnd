@@ -17,5 +17,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath ("com.android.support:appcompat-v7:25.3.1")
+    
     }
 }

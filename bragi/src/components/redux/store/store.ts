@@ -1,8 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import logger from 'redux-logger'
 import { musicReducer } from "../reducer/musicReducer";
+import { loginReducer, spotyifyReducer } from "../reducer/loginReducer";
 const rootReducer = combineReducers({
-    music:musicReducer
+    music:musicReducer,
+    login:loginReducer,
+    spotify:spotyifyReducer
 })
 
 const store = createStore(rootReducer,applyMiddleware(logger))

@@ -7,7 +7,7 @@ import SearchedArtist from './SearchedArtist'
 export default function SearchMusicPage(){
     return(
         <View style={styles.container}>
-            <Header title='검색' iconName='icon'/>
+            <Header title='검색' iconName='search' onPress={()=>{}}/>
             <MusicInput/>
             <View style={{borderWidth:0.3,borderColor:COLOR.SEPARATE_LINE}}/>
             <SearchedArtist/>

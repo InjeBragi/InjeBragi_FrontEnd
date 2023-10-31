@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { COLOR } from "../../../colors/Colors";
-import ImagePicker from "../../../components/ImagePicker";
+import ImagePicker from "../../../components/Image/ImagePicker";
 import LogHeader from "../../../components/Header/LogHeader";
 import SignUpInput from "../../../components/SignUpInput";
 import { useLog } from "../../../hooks/useLog";

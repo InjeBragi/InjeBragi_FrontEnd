@@ -6,12 +6,16 @@ import LogHeader from "../../../components/Header/LogHeader";
 import SignUpInput from "../../../components/SignUpInput";
 import { useLog } from "../../../hooks/useLog";
 import { useRootNavigation } from "../../../navigations/StackNavigation";
-
+import { client } from "../../../services/client";
+import { useDispatch } from "react-redux";
+import { setLoginedUser, setToken } from "../../../components/redux/action/actionLogin";
+import { setSpotifyToken } from "../../../components/redux/action/actionSpotify";
 type inputType={
     title:string,
     text:string,
-    setText:React.Dispatch<React.SetStateAction<string>>
+    setText:React.Dispatch<React.SetStateAction<string>>,
 }
+
 const InputSignIn = ({title,text,setText}:inputType)=>{
     return(
         <TextInput style={styles.inputBox}
@@ -28,14 +32,25 @@ export default function SignInPage(){
     const [visible,setVisible] = useState<boolean>(false)
     const navigation = useRootNavigation()
     const {onPressLogin} = useLog()
-    const onPress = () =>{
-        if(onPressLogin({id,pw})){
-            navigation.navigate('Bottom')
+    const {GET_SPOTIFY_TOKEN} =client()
+    const dispatch = useDispatch()
+    const onPress = async () =>{
+        onPressLogin({id,pw}).then((result:any)=>{
+        if(result.data.status == "SUCCESS"){
+            GET_SPOTIFY_TOKEN().then((res)=>{
+                dispatch(setLoginedUser(result.data))
+                dispatch(setSpotifyToken(res))
+                navigation.navigate('Bottom')
+            })
+           
         }
         else{
             setPw('')
             setVisible(true)
         }
+       })
+       
+      
     }
     useEffect(()=>{
         if(visible&&pw.length>1){

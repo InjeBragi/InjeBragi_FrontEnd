@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { userForm } from "../@types/dataType";
 import { client } from "../services/client";
 
@@ -14,7 +15,8 @@ const user = {...userData}
 export const useLog=()=>{
     const{
         SIGNIN_POST,
-        SIGNUP_POST
+        SIGNUP_POST,
+        GET_SPOTIFY_TOKEN
     }=client()
    const setAccount = (account:string) =>{
         user.account=account
@@ -70,14 +72,17 @@ export const useLog=()=>{
    
    }
    type props={id:string,pw:string}
-   const onPressLogin = ({id,pw}:props) => {
+   const onPressLogin =  ({id,pw}:props) => {
+         
         //post
         const postData = {
             "account":id,
             "password":pw
         }
-        SIGNIN_POST(postData)
-        return true
+        const result = SIGNIN_POST(postData)
+        
+      return result;
+
        
    }
     return{

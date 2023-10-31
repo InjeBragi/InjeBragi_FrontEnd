@@ -6,15 +6,9 @@ export const client = () =>{
      'http://localhost8080'
     const SIGNIN_POST = async (data:object)=>{
         try{
-            console.log(data,'data')
             const response = await axios.post(`${serverPath}/sign-in`, data);
-            if(response.status){
-               console.log(response.data.status)
-               console.log(response.data,'data')
-            }
-            else {
-                console.log('2222')
-            }
+            //console.log(response.data)
+           return response
         }   
         catch(error){
             
@@ -49,10 +43,45 @@ export const client = () =>{
         }
 
     }
+    const GET_SPOTIFY_TOKEN = async () => {
+        console.log('token')
+        try{
+            const res = await axios.get(`${serverPath}/get-token`)
+            console.log('token', res.data)
+            return res.data
+        }
+        catch(error){
+            console.log(error)
+            
+        }
+
+    }
+    const GET_SPOTIFY_TRACK = async (token:any) => {
+        const accessToken = token;
+        const playlistId = 'iu';
+
+        const url = `https://api.spotify.com/v1/search`;
+        const res = await axios.get(url, {
+            params:{
+                q:'iu',
+                type:'track',
+                limit:1
+            },
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+              },
+          })
+          return res.data.tracks.items
+              
+          
+           
+    }
     return{
         SIGNIN_POST,
         SIGNUP_POST,
-        SPOTIFY_SEARCH_GET
+        SPOTIFY_SEARCH_GET,
+        GET_SPOTIFY_TOKEN,
+        GET_SPOTIFY_TRACK
     }
 
 }
