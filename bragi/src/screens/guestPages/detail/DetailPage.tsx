@@ -1,18 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import Header from '../../../components/Header/Header'
 import { COLOR } from '../../../colors/Colors'
 import { useSelector } from 'react-redux'
 import { RootReducerState } from '../../../components/redux/store/store'
-import FollowButton from './components/FollowButton'
+import { useRootNavigation } from '../../../navigations/StackNavigation'
+
+
 
 export default function DetailPage() {
     const signedUser = useSelector((state: RootReducerState) => state.login.state)
+    const [imageUrl,setImageUrl] = useState<string>('')
+    const navigation = useRootNavigation()
+   
+    useEffect(()=>{
+
+        setImageUrl(signedUser.data.url)
+        
+    },[signedUser])
+ 
     const UserInfoHeader = () => {
         return (
             <View style={styles.userInfoHeaderContaner}>
                 <View style={styles.imageContainer}>
-                    <Image style={styles.userImage} source={{ uri: '' }}></Image>
+                    <Image style={styles.userImage} 
+                        source={{uri:imageUrl}}/>
+                    
                 </View>
                 <View style={styles.borderW}>
                     <Text style={styles.infoText}>0</Text>
@@ -42,7 +55,7 @@ export default function DetailPage() {
 
     }
     const onPressProfileSetting = () =>{
-
+        navigation.navigate('UserFix')
     }
     const UserFeeds = ()=>{
         /*데이터 베이스를 통해 가져온 피드 사진 보여주기 */
@@ -79,11 +92,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     userImage: {
+        flex:1,
         width: 75,
         height: 75,
-        borderColor: 'white',
         backgroundColor: COLOR.INPUTBOX_GRAY,
-        borderRadius: 75 * 0.5
+        borderRadius: 75 * 0.5,
+        resizeMode:'cover'
     },
     borderW: {
         flex: 0.25,

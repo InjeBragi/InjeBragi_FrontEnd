@@ -9,6 +9,7 @@ import SignUpName from "../screens/sign/signup/SignUpName";
 import SignUpPw from "../screens/sign/signup/SignUpPw";
 import MainPage from "../screens/guestPages/MainPage";
 import TabNavigation from "./TabNavigation";
+import DetailFixPage from "../screens/guestPages/detail/DetailFixPage";
 
 export type RootStackParamList ={
     Landing:undefined,
@@ -19,7 +20,8 @@ export type RootStackParamList ={
     SignUpId:undefined,
     SignIn:undefined,
     Main:undefined,
-    Bottom:undefined
+    Bottom:undefined,
+    UserFix:undefined
 
 }
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -31,7 +33,7 @@ export default function StackNavigation(){
             headerShown:false
             }}
             initialRouteName="Landing">
-                <Stack.Screen name="Landing" component={Landing}/>
+            <Stack.Screen name="Landing" component={Landing}/>
             <Stack.Screen name="SignUpPw" component={SignUpPw}/>
             <Stack.Screen name="SignUpId" component={SignUpId}/>
             <Stack.Screen name="SignUpBirth" component={SignUpBrith}/>
@@ -40,6 +42,10 @@ export default function StackNavigation(){
             <Stack.Screen name="SignIn" component={SignInPage}/>
             
             <Stack.Screen name="Bottom" component={TabNavigation}/>
+            <Stack.Screen name="UserFix" component={DetailFixPage} options={{
+                animation:"slide_from_bottom"
+            }}/>
+            
         </Stack.Navigator>
     )
 }

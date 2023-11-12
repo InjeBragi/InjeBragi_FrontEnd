@@ -32,17 +32,25 @@ export default function SignInPage(){
     const [visible,setVisible] = useState<boolean>(false)
     const navigation = useRootNavigation()
     const {onPressLogin} = useLog()
-    const {GET_SPOTIFY_TOKEN} =client()
+    const {
+        GET_SPOTIFY_TOKEN,
+        
+    } =client()
     const dispatch = useDispatch()
     const onPress = async () =>{
         onPressLogin({id,pw}).then((result:any)=>{
         if(result.data.status == "SUCCESS"){
+            const newData = result.data
             GET_SPOTIFY_TOKEN().then((res)=>{
-                dispatch(setLoginedUser(result.data))
+                console.log('=====',newData)
+                console.log('=====',newData.data.url)
+               const path = newData.data.url
+                newData.data.url = `http://10.0.2.2:8080/image/images${path}`
+                console.log('newData',newData)
+                dispatch(setLoginedUser(newData))
                 dispatch(setSpotifyToken(res))
                 navigation.navigate('Bottom')
             })
-           
         }
         else{
             setPw('')

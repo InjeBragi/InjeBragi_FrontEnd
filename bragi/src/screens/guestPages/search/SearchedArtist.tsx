@@ -1,38 +1,66 @@
-import { Dimensions, FlatList, Image, ListRenderItem, StyleSheet, Text, View } from "react-native";
-import { useSelector } from "react-redux";
+import { Dimensions, FlatList, Image, ListRenderItem, StyleSheet, Text, View,Pressable } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { RootReducerState } from "../../../components/redux/store/store";
 import { useEffect } from "react";
 import { album } from "../../../@types/dataType";
 import { COLOR } from "../../../colors/Colors";
+import { setNowPlayingMusic } from "../../../components/redux/action/actionMusic";
+import { client } from "../../../services/client";
 
 const rec = Dimensions.get('screen').width-40
-const RenderItem = ({item}:{item:album})=>{
+type renderProp ={
+    item:album,
+    visible:any,
+    setVisible:any,
+    dispatch:any
+}
+const RenderItem = ({item,setVisible,visible,dispatch}:renderProp)=>{
+    const userToken = useSelector((state:RootReducerState)=>state.spotify.state.data)
+    const {GET_SPOTIFY_TRACK} = client()
     useEffect(()=>{
         console.log(item.imageUrl)
     })
-    
+    const onPressAlbum = () => {
+         GET_SPOTIFY_TRACK({token:userToken,
+            artistName:item.artistName,
+            trackName:item.title}).then((res)=>{
+                dispatch(setNowPlayingMusic(res))
+                if(visible==false){
+                    setVisible(true)
+                }
+            })
+    }
     return(
-        <View style={styles.albumContainer}>
+        <Pressable style={styles.albumContainer}
+            onPress={onPressAlbum}>
             <View style={{width:"17%"}}>
             <Image style={styles.albumImage} source={{uri:item.imageUrl}} resizeMethod="auto"/>
             </View>
             
             <View style={{width:"80%" ,paddingLeft:10}}>
-            <Text style={styles.albumText}>{item.albumName}</Text>
+            <Text style={styles.albumText}>{item.title}</Text>
             <Text style={styles.artistText}>{item.artistName}</Text>
             
             </View>
             
-        </View>
+        </Pressable>
     )
 }
-export default function SearchedArtist(){
+type props = {
+    visible:boolean,
+    setVisible:any
+}
+export default function SearchedArtist({visible,setVisible}:props){
     const data = useSelector((state:RootReducerState)=>state.music.state)
+   const dispatch = useDispatch();
     return(
         <View style={{flex:1}}>
             <FlatList
             data={data}
-            renderItem={({item}) => <RenderItem item={item} />}
+            renderItem={({item,index}) => <RenderItem item={item}
+            visible={visible} 
+            setVisible={setVisible}
+             dispatch = {dispatch} />}
             keyExtractor={(item,i)=>`${i}` }/>
            
         

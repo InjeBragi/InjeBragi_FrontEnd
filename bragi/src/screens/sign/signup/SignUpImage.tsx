@@ -13,8 +13,8 @@ export default function SignUpImage() {
         <View style={styles.container}>
             <LogHeader title="계정 만들기"/>
             <View style={styles.content}>
-            <Text style={styles.titleText}>프로필 이미지를 선택해주세요</Text>
-                <ImagePicker/>
+            <Text style={styles.titleText}>계정이 생성되었습니다.</Text>
+                <ImagePicker canChange={false} />
                 
             </View>
             

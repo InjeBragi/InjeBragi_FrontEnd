@@ -7,25 +7,21 @@ type InputProps={
     onPress:()=>void|null,
     title:string,
     value:string,
-    uri:string
 }
-export default function SignUpInput({onPress,title,value,uri}:InputProps){
+export default function SignUpInput({onPress,title,value}:InputProps){
     const [text,setText] = useState<string>('')
     const {
         setAccount,
         setAge,
         setPw,
-        setName,
-        setImage,
-        
-        
+        setName,   
     }=useLog()
     const setValue = () =>{
         if(value == 'PW') return setPw(text);
         else if(value == 'BIRTH') return setAge(text);
         else if(value == 'ID') return setAccount(text);
         else if(value =='NAME') return setName(text);
-        else if(value == 'IMAGE') return setImage(uri)
+        
     }
     return(
         <>
@@ -38,7 +34,7 @@ export default function SignUpInput({onPress,title,value,uri}:InputProps){
                 <Pressable 
                 style={styles.button}
                 onPress={()=>{
-                    setValue()
+                    setValue();
                     onPress()}}>
                 <Text style={styles.buttonText}>{title}</Text>
             </Pressable>    

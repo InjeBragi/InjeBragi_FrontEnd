@@ -37,13 +37,10 @@ export const useLog=()=>{
     user.name=name
     console.log('user',user)
     console.log('userData',userData)
-   }
-   const setImage = (image:string) => {
-    user.image=image
-    console.log('user',user)
-    console.log('userData',userData)
+    
     onPressSubmit()
    }
+
    const onPressSubmit =async()=>{
         
     /*
@@ -88,7 +85,6 @@ export const useLog=()=>{
     return{
         setAccount,
         setAge,
-        setImage,
         setName,
         setPw,
         onPressSubmit,
