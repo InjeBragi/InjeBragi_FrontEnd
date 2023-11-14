@@ -7,9 +7,10 @@ import SignUpId from "../screens/sign/signup/SignUpId";
 import SignUpImage from "../screens/sign/signup/SignUpImage";
 import SignUpName from "../screens/sign/signup/SignUpName";
 import SignUpPw from "../screens/sign/signup/SignUpPw";
-import MainPage from "../screens/guestPages/MainPage";
 import TabNavigation from "./TabNavigation";
 import DetailFixPage from "../screens/guestPages/detail/DetailFixPage";
+import CreateFeedPage from "../screens/guestPages/feed/CreateFeedPage";
+import CreateFeedContentPage from "../screens/guestPages/feed/CreateFeedContentPage";
 
 export type RootStackParamList ={
     Landing:undefined,
@@ -21,10 +22,13 @@ export type RootStackParamList ={
     SignIn:undefined,
     Main:undefined,
     Bottom:undefined,
-    UserFix:undefined
+    UserFix:undefined,
+    CreateFeed:undefined,
+    CreateFeedContentPage:undefined
 
 }
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
 export default function StackNavigation(){
     
     return(
@@ -45,7 +49,15 @@ export default function StackNavigation(){
             <Stack.Screen name="UserFix" component={DetailFixPage} options={{
                 animation:"slide_from_bottom"
             }}/>
-            
+            <Stack.Screen name="CreateFeed" component={CreateFeedPage}
+                options={{
+                    animation:"slide_from_right"
+                }}/>
+            <Stack.Screen name="CreateFeedContentPage" component={CreateFeedContentPage}
+                options={{
+                    animation:"slide_from_right"
+                }}/>
+          
         </Stack.Navigator>
     )
 }

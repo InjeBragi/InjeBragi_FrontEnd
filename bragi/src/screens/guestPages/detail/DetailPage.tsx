@@ -68,7 +68,7 @@ export default function DetailPage() {
    
     return (
         <View style={styles.container}>
-            <Header iconName='list' title={signedUser.data.name} onPress={onPressOption} />
+            <Header  leftIconName={null} rightIconName='list' title={signedUser.data.name} onPressRight={onPressOption} onPressLeft={()=>{}}/>
             <UserInfoHeader />
             <SettingUserButton/>
             <UserFeeds/>

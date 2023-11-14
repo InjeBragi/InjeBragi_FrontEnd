@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import MainPage from "../screens/guestPages/MainPage";
+import MainPage from "../screens/guestPages/main/MainPage.tsx";
 import SearchMusicPage from "../screens/guestPages/search/SearchMusicPage";
 import DetailPage from "../screens/guestPages/detail/DetailPage";
 import UploadPage from "../screens/guestPages/upload/UploadPage";

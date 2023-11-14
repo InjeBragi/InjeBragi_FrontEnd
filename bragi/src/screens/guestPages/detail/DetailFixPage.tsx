@@ -40,7 +40,7 @@ export default function DetailFixPage(){
             navigation.pop()
         }
         const onPressSubmit = () => {
-            POST_PROFILE_IMAGE(path.name).then(()=>{
+            POST_PROFILE_IMAGE(path.base64).then(()=>{
                 navigation.pop()
             })
             setTimeout(()=>{

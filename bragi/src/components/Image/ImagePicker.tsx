@@ -26,17 +26,22 @@ export default function ImagePicker({canChange,defaultImage}:props){
     const pickImage = async () => {
         console.log('open photo ==========', photo)
         await launchImageLibrary({
-            mediaType: "photo"
+            mediaType: "photo",
+            includeBase64:true
         }).then((result:ImagePickerResponse|any)=>{
             if(result!=undefined){
                 const localUri = result.assets[0].uri;
+                
                 const uriPath = localUri.split("//").pop();
                 const imageName = localUri.split("/").pop();
                 setPhoto(localUri)
                 console.log('set localurl ==========',localUri)
                 console.log('set uriPath ==========',uriPath)
                 console.log('set Name ==========',imageName)
+                console.log('set Name ==========',result.assets[0].base64)
+                
                 const data={
+                    base64:result.assets[0].base64,
                     path:localUri,
                     name:imageName
                 }
@@ -47,11 +52,6 @@ export default function ImagePicker({canChange,defaultImage}:props){
           }
             
         })
-
-        
-            
-           
-       
     }
 
     const navigation = useRootNavigation();
