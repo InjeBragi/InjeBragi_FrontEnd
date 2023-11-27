@@ -8,7 +8,12 @@ export type HeaderProps = {
     onPressLeft:()=>void
     onPressRight:()=>void
 }
-export default function Header({title,leftIconName,rightIconName,onPressLeft,onPressRight}:HeaderProps){
+export default function Header({
+  title,
+  leftIconName,
+  rightIconName,
+  onPressLeft,
+  onPressRight}:HeaderProps){
     return (
       <View style={styles.titleContainer}>
         {leftIconName ? (

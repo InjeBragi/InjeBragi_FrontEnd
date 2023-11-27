@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducerState } from '../../../components/redux/store/store'
 import { client } from '../../../services/client'
 import { setImagePath } from '../../../components/redux/action/actionLogin'
+import {Buffer} from 'buffer'
 export default function DetailFixPage(){
     const {POST_PROFILE_IMAGE} = client()
     const navigation = useRootNavigation()
@@ -40,7 +41,17 @@ export default function DetailFixPage(){
             navigation.pop()
         }
         const onPressSubmit = () => {
-            POST_PROFILE_IMAGE(path.base64).then(()=>{
+            // const encoder = new TextEncoder()
+            // const buf = encoder.encode(path.base64)
+            // const arr = Buffer.from(path.base64,'utf-8')
+            //const arr =stringToByteArray(path.base64)
+            //console.log(arr)
+            console.log('************************',path)
+            const data = path
+            POST_PROFILE_IMAGE({
+                data:data,
+                token:signedUser.data.token
+            }).then(()=>{
                 navigation.pop()
             })
             setTimeout(()=>{

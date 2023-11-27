@@ -7,44 +7,40 @@ import SignUpInput from "../SignUpInput";
 import { client } from "../../services/client";
 import { useDispatch, useSelector } from "react-redux";
 import { setImagePath } from "../redux/action/actionLogin";
+import BottomSheet from '@gorhom/bottom-sheet'
+import RNFS from 'react-native-fs';
 const width = Dimensions.get("window").width
 const height = Dimensions.get("window").height
 
 type props = {
     canChange:boolean,
-    defaultImage:string,
- 
-   
-
+    defaultImage:string
 }
 export default function ImagePicker({canChange,defaultImage}:props){
-    const [photo, setPhoto] = useState<string>(defaultImage)
+    const [photo, setPhoto] = useState<string>('file:///data/user/0/com.bragi/cache/rn_image_picker_lib_temp_dc436171-4a16-45ce-8f38-2bd71dd51d8f.png')
     const dispatch = useDispatch()
     useEffect(()=>{
         console.log('loadPhoto',photo)
-    })
+    },[photo])
     const pickImage = async () => {
         console.log('open photo ==========', photo)
         await launchImageLibrary({
             mediaType: "photo",
-            includeBase64:true
+            
         }).then((result:ImagePickerResponse|any)=>{
             if(result!=undefined){
                 const localUri = result.assets[0].uri;
-                
+                const base = result.assets[0].base64
                 const uriPath = localUri.split("//").pop();
                 const imageName = localUri.split("/").pop();
                 setPhoto(localUri)
-                console.log('set localurl ==========',localUri)
-                console.log('set uriPath ==========',uriPath)
-                console.log('set Name ==========',imageName)
-                console.log('set Name ==========',result.assets[0].base64)
+                 console.log('set localurl ==========',localUri)
+                // console.log('set uriPath ==========',uriPath)
+                // console.log('set Name ==========',imageName)
+                // console.log('image data ==========',result.assets[0])
                 
-                const data={
-                    base64:result.assets[0].base64,
-                    path:localUri,
-                    name:imageName
-                }
+                const data=result
+                console.log(data)
                 dispatch(setImagePath(data))
             }
           else{
@@ -67,6 +63,28 @@ export default function ImagePicker({canChange,defaultImage}:props){
             </Pressable>
         )
     }
+    const [imagePath, setIm] = useState('');
+    const fetchImage = async () => {
+        try {
+          
+            const filePath = `file:///data/user/0/`;
+            const fileExists = await RNFS.exists(filePath);
+            console.log('fileExist-------------------\n\n\n\n',fileExists)
+            if(fileExists){
+                setIm(imagePath)
+            }
+        }
+
+        catch(error)
+        {
+         
+        }
+    }
+    useEffect(() => {
+        console.log('q\n\n\n\n\q')
+     
+        fetchImage()
+    },[])
     return(
         <>
         <Pressable style={styles.imageContainer}
@@ -74,7 +92,8 @@ export default function ImagePicker({canChange,defaultImage}:props){
             onPress={()=>{pickImage()}}>
             <Image 
                 style={styles.image}
-                source={{uri:photo}}/>
+                source={{uri:imagePath}}/>
+            
         </Pressable>
         {canChange?
         <PressableText/>:
@@ -90,14 +109,15 @@ const styles = StyleSheet.create({
         alignSelf:"center",
         width:'60%',
         height:'35%',
-        borderRadius:width*height*0.5,
-        backgroundColor:COLOR.INPUTBOX_GRAY,
+        borderRadius:width*height*0.4,
+        
         marginBottom:20
     },
     image:{
-        width:'100%',
+        alignSelf:"center",
+        width:'90%',
         height:'100%',
-        borderRadius:200,
+        borderRadius:125,
     },
     textContainer:{
         flex:1,

@@ -10,12 +10,13 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {useRootNavigation} from '../../../navigations/StackNavigation';
-import {COLOR} from '../../../colors/Colors';
-import Header from '../../../components/Header/Header';
-import {setFeedMusic} from '../../../components/redux/action/actionFeedCreate';
+import {useRootNavigation} from '../../../../navigations/StackNavigation';
+import {COLOR} from '../../../../colors/Colors';
+import Header from '../../../../components/Header/Header';
+import {setFeedMusic} from '../../../../components/redux/action/actionFeedCreate';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper';
+import { RootReducerState } from '../../../../components/redux/store/store';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -23,7 +24,7 @@ const height = Dimensions.get('window').height;
 export default function CreateFeedContentPage() {
   const [text, setText] = useState<string>('');
 
-  const musicData = useSelector(state => state.feedCreate.music);
+  const musicData = useSelector((state:RootReducerState) => state.feedCreate.music);
   const navigation = useRootNavigation();
   const dispatch = useDispatch();
 

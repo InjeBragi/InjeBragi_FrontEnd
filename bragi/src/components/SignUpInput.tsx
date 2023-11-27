@@ -29,6 +29,7 @@ export default function SignUpInput({onPress,title,value}:InputProps){
         <TextInput style={styles.inputBox}
             value={text}
             onChangeText={(value)=>{setText(value)}}
+            secureTextEntry={value=='PW'?true:false}
         />}
         <View style={styles.buttonContainer}>
                 <Pressable 

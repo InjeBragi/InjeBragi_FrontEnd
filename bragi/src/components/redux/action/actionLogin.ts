@@ -32,9 +32,9 @@ export const setClickedUser = (data:string) =>{
         data:data
     }
 }
-export const setImagePath = (path:any) =>{
+export const setImagePath = (data:any) =>{
     return{
         type:SET_IMAGE_PATH,
-        path:path
+        data:data
     }
 }

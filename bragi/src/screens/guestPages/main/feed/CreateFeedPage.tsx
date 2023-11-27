@@ -1,10 +1,10 @@
-import React,{useState,useEffct} from 'react'
+import React,{useState} from 'react'
 import {View,Pressable,Text,StyleSheet} from 'react-native'
-import { useRootNavigation } from '../../../navigations/StackNavigation'
-import { COLOR } from '../../../colors/Colors'
-import Header from '../../../components/Header/Header'
-import SearchedArtist from '../search/SearchedArtist'
-import MusicInput from '../../../components/input/MusicInput'
+import { useRootNavigation } from '../../../../navigations/StackNavigation'
+import { COLOR } from '../../../../colors/Colors'
+import Header from '../../../../components/Header/Header'
+import SearchedArtist from '../../search/SearchedArtist'
+import MusicInput from '../../../../components/input/MusicInput'
 import { useSelector } from 'react-redux'
 export default function CreateFeedPage(){
 
@@ -45,14 +45,13 @@ export default function CreateFeedPage(){
             <View style={{borderWidth:0.3,borderColor:COLOR.SEPARATE_LINE}}/>
             <MusicInput/>
             <SearchedArtist 
-            visible={null} 
+            visible={false} 
             setVisible={null} 
             createMode={true} 
             selectedItem={selectedItem} 
             setSelectedItem={setSelectedItem}/>
-            <Pressable onPress={onPressCreateFeed}>
-                <Text style={{color:COLOR.FONTCOLOR_WHITE}}>pop</Text>
-            </Pressable>
+            
+
         </View>
     )
    

@@ -14,7 +14,7 @@ export default function SignUpImage() {
             <LogHeader title="계정 만들기"/>
             <View style={styles.content}>
             <Text style={styles.titleText}>계정이 생성되었습니다.</Text>
-                <ImagePicker canChange={false} />
+                <ImagePicker canChange={false} defaultImage="..\assets\anonymous.png"/>
                 
             </View>
             

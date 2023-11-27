@@ -61,7 +61,7 @@ export const pathReducer = (state=path,action:any) =>{
     switch(action.type){
         case SET_IMAGE_PATH:{
             return{
-                path:action.path
+                path:action.data
             }
         }
     }

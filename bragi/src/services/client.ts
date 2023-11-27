@@ -26,14 +26,34 @@ export const client = () =>{
         }
     }
    
-    const POST_PROFILE_IMAGE = async(file:string)=>{
+    type post_profile_image_props ={
+        data:object|any,
+        token:string|any,
+    }
+    const POST_PROFILE_IMAGE = async({data,token}:post_profile_image_props)=>{
+        const formData = new FormData();
+        console.log('post data =======', data.assets[0].uri)
+        formData.append('file', {
+          uri: data.assets[0].uri,
+          name: data.assets[0].fileName, // 파일 이름
+          type: data.assets[0].type, // 파일 타입
+        });
+    
+        //console.log('POST_PROFILE_IMAGE=======',data)
         try{
-            await axios.post(`${serverPath}/imgae/upload`,file).then((res)=>{
+            await axios.post(`${serverPath}/image`,formData,{
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}` // Bearer 스킴을 사용하여 토큰 전달
+                  },
+             
+            }).then((res)=>{
                 console.log(res)
             })
             
+            
         }catch(error){
-
+            console.log(error)
         }
     }
     const SPOTIFY_SEARCH_GET =async (data:string) =>{

@@ -9,8 +9,8 @@ import SignUpName from "../screens/sign/signup/SignUpName";
 import SignUpPw from "../screens/sign/signup/SignUpPw";
 import TabNavigation from "./TabNavigation";
 import DetailFixPage from "../screens/guestPages/detail/DetailFixPage";
-import CreateFeedPage from "../screens/guestPages/feed/CreateFeedPage";
-import CreateFeedContentPage from "../screens/guestPages/feed/CreateFeedContentPage";
+import CreateFeedPage from "../screens/guestPages/main/feed/CreateFeedPage";
+import CreateFeedContentPage from "../screens/guestPages/main/feed/CreateFeedContentPage";
 
 export type RootStackParamList ={
     Landing:undefined,
