@@ -1,6 +1,6 @@
 # InjeBragi_FrontEnd
 # 브라기
-
+spotify api를 활용한 음악공유 sns 모바일 앱 서비스입니다.
 <p align="center">
   <br>
    <img alt="bragiPoster" src="https://github.com/InjeBragi/InjeBragi_FrontEnd/assets/50660458/0f79b04e-8d79-47a8-b859-b1be3050d061">
