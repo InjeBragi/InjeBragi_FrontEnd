@@ -3,7 +3,7 @@
 
 <p align="center">
   <br>
-  <img alt="injeRecipePoster" src="https://github.com/n0hack/readme-template/assets/50660458/779b1f87-e2e2-463b-a8c7-34dd59c74e4e5">
+   <img alt="bragiPoster" src="https://github.com/InjeBragi/InjeBragi_FrontEnd/assets/50660458/0f79b04e-8d79-47a8-b859-b1be3050d061">
   <br>
 </p>
 
