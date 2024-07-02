@@ -3,15 +3,16 @@ import { COLOR } from "../colors/Colors"
 
 type Props = {
     title:string,
-    onPress:undefined|null,
-    icon:string
+    onPress:()=>void,
+    icon:ImageSourcePropType
 }
 export default function LogButton({title,onPress,icon}:Props){
     console.log(icon)
     return(
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button}
+        onPress={()=>{onPress()}}>
             <View style={{position:"absolute"}}>
-            <Image style={styles.icon} source={{uri:icon}}/>
+            <Image style={styles.icon} source={icon}/>
             </View>
             <View style={styles.textContiner}>
             <Text style={styles.buttonFont}>{title}</Text>

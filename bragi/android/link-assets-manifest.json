@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/font/JalnanGothic.otf",
+      "sha1": "37d7be26161690399f1b8777c6557360dd7cf917"
+    },
+    {
+      "path": "src/assets/font/JalnanGothicTTF.ttf",
+      "sha1": "b6f2a6000f6ea1ae8b341cf74686cb919412ea8d"
+    }
+  ]
+}
